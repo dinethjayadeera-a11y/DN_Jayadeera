@@ -1,0 +1,27 @@
+{
+  "whatsapp": "94710000000",
+  "credentials": {
+    "username": "ජයවීර",
+    "password": "1234"
+  },
+  "projects": [
+    {
+      "title": "Cinematic Travel Vlog",
+      "thumb": "https://images.unsplash.com/photo-1555325883-8a3839212c75?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "desc": "Shot on Sony a7 III & DJI RS 4. Edited in Premiere Pro with custom Lumetri color grading.",
+      "url": "https://www.youtube.com/watch?v=LXb3EKWsInQ"
+    },
+    {
+      "title": "Commercial Event Coverage",
+      "thumb": "https://images.unsplash.com/photo-1516280440502-861f5ec1396b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "desc": "Event media coverage including motion graphics done in Adobe After Effects.",
+      "url": "https://www.facebook.com/"
+    },
+    {
+      "title": "Music Video Shoot",
+      "thumb": "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "desc": "Produced at Matara Malli Studio featuring local artists. Full production and color grading.",
+      "url": "https://www.youtube.com/"
+    }
+  ]
+}
