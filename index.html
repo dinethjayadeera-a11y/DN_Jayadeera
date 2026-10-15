@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="si" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A film by DN Jayadeera</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0B5CFF',
+                        primaryDark: '#0045D8',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
+        }
+        /* Clean Subtle Background Pattern */
+        .clean-bg {
+            background-color: #F8FAFC;
+            background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        /* Smooth Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #F1F5F9; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col">
+
+    <!-- ================= NAVBAR (100% Responsive) ================= -->
+    <header class="sticky top-0 z-40 w-full bg-white/85 backdrop-blur-md border-b border-slate-200/80 transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20 gap-3">
+                
+                <!-- Brand Logo (With proper space after DN) -->
+                <a href="#" class="flex items-center gap-2.5 group shrink-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-extrabold text-sm sm:text-base tracking-tight group-hover:bg-primary transition-colors">
+                        DN
+                    </div>
+                    <span class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900">
+                        DN <span class="text-slate-500 font-semibold">Jayadeera</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#" class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors">Home</a>
+                    <a href="#projects" class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors">Projects</a>
+                    <a href="#" class="wa-contact-btn inline-flex items-center gap-2 bg-slate-900 hover:bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all duration-200">
+                        <span>Contact Me</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Menu" class="md:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none transition">
+                    <svg id="menuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="menuIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-5 space-y-3 shadow-lg">
+            <a href="#" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50">Home</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50">Previous Projects</a>
+            <a href="#" class="wa-contact-btn flex items-center justify-center gap-2 w-full bg-primary hover:bg-primaryDark text-white font-semibold py-3 rounded-xl shadow-sm transition">
+                <span>Contact Me on WhatsApp</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= CLEAN HERO SECTION ================= -->
+    <section class="relative clean-bg border-b border-slate-200/70 overflow-hidden">
+        <!-- Soft Top Light Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-gradient-to-b from-blue-100/60 to-transparent blur-3xl pointer-events-none"></div>
+
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-16 sm:pt-24 sm:pb-24 text-center">
+            <!-- Status Pill -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-700">Available for Videography & Editing</span>
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-5">
+                A film by <span class="text-primary">DN Jayadeera</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 font-normal">
+                Freelance Videographer & Video Editor. Crafting cinematic visuals and engaging digital content with professional color grading and motion graphics.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+                <a href="#" class="wa-contact-btn w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primaryDark text-white font-semibold px-8 py-3.5 sm:py-4 rounded-full shadow-md shadow-blue-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-sm sm:text-base">
+                    <span>Hire Me Now</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+                <a href="#projects" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 font-semibold px-8 py-3.5 sm:py-4 rounded-full shadow-sm transition-all duration-200 text-sm sm:text-base">
+                    <span>View My Work</span>
+                </a>
+            </div>
+
+            <!-- Clean Feature Badges -->
+            <div class="mt-12 sm:mt-16 pt-8 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                <div class="bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-slate-200/60">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Quality</p>
+                    <p class="text-sm sm:text-base font-bold text-slate-800 mt-0.5">4K Cinematic</p>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-slate-200/60">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Visuals</p>
+                    <p class="text-sm sm:text-base font-bold text-slate-800 mt-0.5">Color Grading</p>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-slate-200/60">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">VFX</p>
+                    <p class="text-sm sm:text-base font-bold text-slate-800 mt-0.5">Motion Graphics</p>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-slate-200/60">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Production</p>
+                    <p class="text-sm sm:text-base font-bold text-slate-800 mt-0.5">Full Coverage</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROJECTS PORTFOLIO SECTION ================= -->
+    <section id="projects" class="py-16 sm:py-24 flex-grow">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12 gap-4 text-center sm:text-left">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary">Portfolio</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-1">My Previous Projects</h2>
+                </div>
+                <p class="text-sm text-slate-500 max-w-md mx-auto sm:mx-0">
+                    Click on any project card below to watch the full video on YouTube or Facebook.
+                </p>
+            </div>
+
+            <!-- Responsive Grid (1 col on Mobile, 2 on Tablet, 3 on Desktop) -->
+            <div id="projectsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Projects dynamically rendered here -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-white border-t border-slate-200/80 py-8 px-4 text-center">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-md bg-slate-900 text-white text-xs font-bold flex items-center justify-center">DN</span>
+                <span class="text-sm font-bold text-slate-800">DN Jayadeera</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-500 font-medium">
+                <span onclick="showAdminLogin()" class="cursor-pointer select-none hover:text-primary transition" title="Admin Access">&copy;</span> 2026 A film by DN Jayadeera. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ================================================================= -->
+    <!-- CLEAN LIGHT ADMIN MODAL (Login, Dashboard, Order & Credentials)   -->
+    <!-- ================================================================= -->
+    <div id="adminModal" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm overflow-y-auto p-3 sm:p-6 flex items-center justify-center">
+        
+        <!-- 1. LOGIN VIEW -->
+        <div id="loginView" class="bg-white border border-slate-200 rounded-2xl shadow-2xl w-full max-w-md p-6 sm:p-8 relative my-auto">
+            <button onclick="closeAdmin()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-xl font-bold transition">&times;</button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 text-primary flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                </div>
+                <h2 class="text-xl font-extrabold text-slate-900">Admin Login</h2>
+                <p class="text-xs text-slate-500 mt-1">වෙබ් අඩවිය කළමනාකරණය කිරීමට ඇතුළු වන්න</p>
+            </div>
+
+            <div id="adminError" class="hidden bg-red-50 border border-red-200 text-red-600 text-xs sm:text-sm font-semibold p-3 rounded-xl mb-4 text-center">
+                Username හෝ Password වැරදියි!
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Username</label>
+                    <input type="text" id="username" placeholder="ඔබේ username ඇතුලත් කරන්න" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-primary focus:ring-4 focus:ring-blue-500/10 outline-none text-sm transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Password</label>
+                    <input type="password" id="password" placeholder="ඔබේ password ඇතුලත් කරන්න" onkeydown="if(event.key==='Enter') login()" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-primary focus:ring-4 focus:ring-blue-500/10 outline-none text-sm transition">
+                </div>
+                <button onclick="login()" class="w-full bg-primary hover:bg-primaryDark text-white font-bold py-3.5 rounded-xl shadow-md shadow-blue-500/20 transition text-sm">
+                    Login to Dashboard
+                </button>
+            </div>
+        </div>
+
+        <!-- 2. DASHBOARD VIEW -->
+        <div id="dashboardView" class="hidden bg-white border border-slate-200 rounded-2xl shadow-2xl w-full max-w-4xl p-5 sm:p-8 relative my-auto max-h-[92vh] overflow-y-auto">
+            <!-- Header -->
+            <div class="flex items-center justify-between pb-5 mb-6 border-b border-slate-200">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">Admin Dashboard</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">Projects, Order, WhatsApp සහ Login තොරතුරු වෙනස් කරන්න</p>
+                </div>
+                <button onclick="closeAdmin()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-xl font-bold shrink-0 transition">&times;</button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+                
+                <!-- Left Column: Projects List & Ordering (7 cols on Desktop) -->
+                <div class="lg:col-span-7 flex flex-col">
+                    <div class="flex items-center justify-between mb-4 gap-2">
+                        <h3 class="text-sm font-extrabold text-slate-800 uppercase tracking-wider">Manage Projects (<span id="projectCount">0</span>)</h3>
+                        <button onclick="openProjectForm(-1)" class="bg-primary hover:bg-primaryDark text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm transition shrink-0">
+                            + Add New Project
+                        </button>
+                    </div>
+
+                    <!-- Project Items Container -->
+                    <div id="dashboardList" class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Right Column: WhatsApp & Credentials Settings (5 cols on Desktop) -->
+                <div class="lg:col-span-5 space-y-6">
+                    
+                    <!-- WhatsApp Settings Box -->
+                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5">
+                        <h3 class="text-sm font-extrabold text-slate-800 uppercase tracking-wider mb-3">Contact Settings</h3>
+                        <label class="block text-xs font-semibold text-slate-500 mb-1.5">WhatsApp Number (උදා: 9471XXXXXXX)</label>
+                        <input type="text" id="waNumberInput" placeholder="94712345678" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:border-primary outline-none text-sm mb-3">
+                        <button onclick="saveWaNumber()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs sm:text-sm transition">
+                            Update WhatsApp Number
+                        </button>
+                    </div>
+
+                    <!-- Admin Username & Password Settings Box -->
+                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5">
+                        <h3 class="text-sm font-extrabold text-slate-800 uppercase tracking-wider mb-3">Change Admin Login</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1">New Username</label>
+                                <input type="text" id="newAdminUser" placeholder="නව Username එක" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:border-primary outline-none text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1">New Password</label>
+                                <input type="password" id="newAdminPass" placeholder="නව Password එක" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:border-primary outline-none text-sm">
+                            </div>
+                            <button onclick="saveCredentials()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-xs sm:text-sm transition">
+                                Update Username & Password
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. ADD / EDIT PROJECT FORM VIEW -->
+        <div id="projectFormView" class="hidden bg-white border border-slate-200 rounded-2xl shadow-2xl w-full max-w-lg p-6 sm:p-8 relative my-auto">
+            <button onclick="closeAdmin()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-xl font-bold transition">&times;</button>
+            
+            <h2 id="formTitle" class="text-xl font-extrabold text-slate-900 mb-5">Add New Project</h2>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Project Title *</label>
+                    <input type="text" id="pTitle" placeholder="උදා: Cinematic Wedding Video" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-primary outline-none text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Video Link (YouTube / FB) *</label>
+                    <input type="text" id="pLink" oninput="autoFetchYouTubeThumb()" placeholder="https://www.youtube.com/watch?v=..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-primary outline-none text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Thumbnail Image Link</label>
+                    <input type="text" id="pThumb" placeholder="YouTube link දැමූ විට ඉබේම ලැබේ, නැතිනම් Image link එකක් දමන්න" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-primary outline-none text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Description</label>
+                    <textarea id="pDesc" rows="3" placeholder="වීඩියෝව ගැන කෙටි විස්තරයක්..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-primary outline-none text-sm resize-none"></textarea>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button onclick="showDashboard()" class="w-full sm:w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl text-sm transition order-2 sm:order-1">
+                        Back
+                    </button>
+                    <button id="saveBtn" onclick="saveProject()" class="w-full sm:w-2/3 bg-primary hover:bg-primaryDark text-white font-bold py-3 rounded-xl shadow-md shadow-blue-500/20 text-sm transition order-1 sm:order-2">
+                        Save Project
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================= APPLICATION LOGIC ================= -->
+    <script>
+        // Default Data Structure
+        const defaultData = {
+            whatsapp: "",
+            credentials: {
+                username: "ජයවීර",
+                password: "1234"
+            },
+            projects: [
+                {
+                    title: "Cinematic Travel Vlog",
+                    thumb: "https://images.unsplash.com/photo-1555325883-8a3839212c75?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    desc: "Shot on Sony a7 III & DJI RS 4. Edited in Premiere Pro with custom Lumetri color grading.",
+                    url: "https://www.youtube.com/watch?v=LXb3EKWsInQ"
+                },
+                {
+                    title: "Commercial Event Coverage",
+                    thumb: "https://images.unsplash.com/photo-1516280440502-861f5ec1396b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    desc: "Event media coverage including motion graphics done in Adobe After Effects.",
+                    url: "https://www.facebook.com/"
+                },
+                {
+                    title: "Music Video Shoot",
+                    thumb: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    desc: "Produced at Matara Malli Studio featuring local artists. Full production and color grading.",
+                    url: "https://www.youtube.com/"
+                }
+            ]
+        };
+
+        let siteData = null;
+        let currentEditIndex = -1;
+
+        // 1. Load Data (Tries Server data.json via api.php first, falls back to LocalStorage seamlessly)
+        async function initData() {
+            try {
+                const res = await fetch('api.php?action=load', { cache: 'no-store' });
+                if (res.ok) {
+                    const serverData = await res.json();
+                    if (serverData && Array.isArray(serverData.projects)) {
+                        siteData = serverData;
+                        localStorage.setItem('dnCleanSiteData', JSON.stringify(siteData));
+                        applyDataToUI();
+                        return;
+                    }
+                }
+            } catch (e) {
+                // Offline or no PHP server running - use LocalStorage fallback silently
+            }
+
+            const saved = localStorage.getItem('dnCleanSiteData');
+            if (saved) {
+                siteData = JSON.parse(saved);
+                if (!siteData.credentials) {
+                    siteData.credentials = { username: "ජයවීර", password: "1234" };
+                }
+            } else {
+                siteData = JSON.parse(JSON.stringify(defaultData));
+                localStorage.setItem('dnCleanSiteData', JSON.stringify(siteData));
+            }
+            applyDataToUI();
+        }
+
+        // 2. Save Data (Saves to LocalStorage AND silently syncs to server data.json if hosted)
+        async function persistData() {
+            localStorage.setItem('dnCleanSiteData', JSON.stringify(siteData));
+            applyDataToUI();
+
+            try {
+                await fetch('api.php?action=save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(siteData)
+                });
+            } catch (e) {
+                // Silently ignore if running locally without PHP server
+            }
+        }
+
+        // 3. Render Public UI
+        function applyDataToUI() {
+            // Update WhatsApp Buttons
+            const waButtons = document.querySelectorAll('.wa-contact-btn');
+            waButtons.forEach(btn => {
+                if (siteData.whatsapp && siteData.whatsapp.trim() !== '') {
+                    btn.href = `https://wa.me/${siteData.whatsapp.trim()}`;
+                    btn.target = "_blank";
+                } else {
+                    btn.href = "#projects";
+                    btn.removeAttribute('target');
+                }
+            });
+
+            // Render Projects Grid
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = '';
+
+            if (!siteData.projects || siteData.projects.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-white border border-slate-200 rounded-2xl p-12 text-center text-slate-500">
+                        No projects added yet.
+                    </div>`;
+                return;
+            }
+
+            siteData.projects.forEach(project => {
+                const thumbSrc = project.thumb && project.thumb.trim() !== ''
+                    ? project.thumb
+                    : 'https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';
+
+                const card = document.createElement('a');
+                card.href = project.url;
+                card.target = "_blank";
+                card.rel = "noopener noreferrer";
+                card.className = "group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col";
+
+                card.innerHTML = `
+                    <div class="relative aspect-video w-full bg-slate-100 overflow-hidden">
+                        <img src="${thumbSrc}" alt="${project.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/25 transition-colors flex items-center justify-center">
+                            <div class="w-12 h-12 rounded-full bg-white/95 text-primary shadow-md flex items-center justify-center transform scale-90 opacity-90 group-hover:scale-100 group-hover:opacity-100 transition-all">
+                                <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 sm:p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-primary transition-colors mb-2 line-clamp-1">${project.title}</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed line-clamp-3">${project.desc || ''}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Mobile Navbar Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const openIcon = document.getElementById('menuIconOpen');
+            const closeIcon = document.getElementById('menuIconClose');
+            menu.classList.toggle('hidden');
+            openIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        // ================= ADMIN FUNCTIONS =================
+        function showAdminLogin() {
+            document.getElementById('adminModal').classList.remove('hidden');
+            document.getElementById('loginView').classList.remove('hidden');
+            document.getElementById('dashboardView').classList.add('hidden');
+            document.getElementById('projectFormView').classList.add('hidden');
+            document.getElementById('adminError').classList.add('hidden');
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminModal').classList.add('hidden');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Keyboard Shortcut (Ctrl + Shift + A)
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+                e.preventDefault();
+                showAdminLogin();
+            }
+        });
+
+        function login() {
+            const un = document.getElementById('username').value.trim();
+            const pw = document.getElementById('password').value.trim();
+
+            const validUser = siteData.credentials.username;
+            const validPass = siteData.credentials.password;
+
+            // Allow current credentials (or 'admin' on first use for convenience)
+            if ((un === validUser || (validUser === 'ජයවීර' && un === 'admin')) && pw === validPass) {
+                showDashboard();
+            } else {
+                document.getElementById('adminError').classList.remove('hidden');
+            }
+        }
+
+        function showDashboard() {
+            document.getElementById('loginView').classList.add('hidden');
+            document.getElementById('projectFormView').classList.add('hidden');
+            document.getElementById('dashboardView').classList.remove('hidden');
+
+            document.getElementById('waNumberInput').value = siteData.whatsapp || '';
+            document.getElementById('newAdminUser').value = siteData.credentials.username || '';
+            document.getElementById('newAdminPass').value = siteData.credentials.password || '';
+
+            renderDashboardList();
+        }
+
+        function renderDashboardList() {
+            const list = document.getElementById('dashboardList');
+            const countEl = document.getElementById('projectCount');
+            list.innerHTML = '';
+            countEl.innerText = siteData.projects.length;
+
+            siteData.projects.forEach((proj, index) => {
+                const thumbSrc = proj.thumb && proj.thumb.trim() !== ''
+                    ? proj.thumb
+                    : 'https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';
+
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between gap-3 bg-slate-50 border border-slate-200/80 p-2.5 sm:p-3 rounded-xl hover:border-slate-300 transition";
+                item.innerHTML = `
+                    <div class="flex items-center gap-3 min-w-0 flex-1">
+                        <img src="${thumbSrc}" class="w-12 h-10 sm:w-14 sm:h-11 rounded-lg object-cover bg-slate-200 shrink-0">
+                        <div class="min-w-0 flex-1">
+                            <p class="text-xs sm:text-sm font-bold text-slate-800 truncate">${proj.title}</p>
+                            <p class="text-[11px] text-slate-400 truncate">${proj.url}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 shrink-0">
+                        <button onclick="moveProject(${index}, -1)" title="Move Up" class="p-1.5 sm:p-2 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 text-xs transition ${index === 0 ? 'opacity-40 cursor-not-allowed' : ''}">⬆️</button>
+                        <button onclick="moveProject(${index}, 1)" title="Move Down" class="p-1.5 sm:p-2 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 text-xs transition ${index === siteData.projects.length - 1 ? 'opacity-40 cursor-not-allowed' : ''}">⬇️</button>
+                        <button onclick="openProjectForm(${index})" title="Edit" class="p-1.5 sm:p-2 rounded-lg bg-white border border-slate-200 hover:bg-blue-50 text-primary text-xs transition">✏️</button>
+                        <button onclick="deleteProject(${index})" title="Delete" class="p-1.5 sm:p-2 rounded-lg bg-white border border-slate-200 hover:bg-red-50 text-red-600 text-xs transition">🗑️</button>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function moveProject(index, direction) {
+            if (direction === -1 && index === 0) return;
+            if (direction === 1 && index === siteData.projects.length - 1) return;
+
+            const temp = siteData.projects[index];
+            siteData.projects[index] = siteData.projects[index + direction];
+            siteData.projects[index + direction] = temp;
+
+            persistData();
+            renderDashboardList();
+        }
+
+        function deleteProject(index) {
+            if (confirm("මේ ප්‍රොජක්ට් එක මකා දමන්න අවශ්‍යද?")) {
+                siteData.projects.splice(index, 1);
+                persistData();
+                renderDashboardList();
+            }
+        }
+
+        function openProjectForm(index) {
+            currentEditIndex = index;
+            document.getElementById('dashboardView').classList.add('hidden');
+            document.getElementById('projectFormView').classList.remove('hidden');
+
+            if (index === -1) {
+                document.getElementById('formTitle').innerText = "Add New Project";
+                document.getElementById('saveBtn').innerText = "Publish Project";
+                document.getElementById('pTitle').value = '';
+                document.getElementById('pThumb').value = '';
+                document.getElementById('pDesc').value = '';
+                document.getElementById('pLink').value = '';
+            } else {
+                const proj = siteData.projects[index];
+                document.getElementById('formTitle').innerText = "Edit Project";
+                document.getElementById('saveBtn').innerText = "Update Project";
+                document.getElementById('pTitle').value = proj.title;
+                document.getElementById('pThumb').value = proj.thumb;
+                document.getElementById('pDesc').value = proj.desc;
+                document.getElementById('pLink').value = proj.url;
+            }
+        }
+
+        function autoFetchYouTubeThumb() {
+            const url = document.getElementById('pLink').value.trim();
+            const thumbInput = document.getElementById('pThumb');
+            let videoId = '';
+
+            if (url.includes('youtube.com/watch?v=')) {
+                videoId = url.split('v=')[1].split('&')[0];
+            } else if (url.includes('youtu.be/')) {
+                videoId = url.split('youtu.be/')[1].split('?')[0];
+            }
+
+            if (videoId) {
+                thumbInput.value = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+            }
+        }
+
+        function saveProject() {
+            const title = document.getElementById('pTitle').value.trim();
+            const thumb = document.getElementById('pThumb').value.trim();
+            const desc = document.getElementById('pDesc').value.trim();
+            const url = document.getElementById('pLink').value.trim();
+
+            if (!title || !url) {
+                alert("කරුණාකර Title සහ Video Link එක අනිවාර්යයෙන් ඇතුලත් කරන්න!");
+                return;
+            }
+
+            if (currentEditIndex === -1) {
+                siteData.projects.unshift({ title, thumb, desc, url });
+            } else {
+                siteData.projects[currentEditIndex] = { title, thumb, desc, url };
+            }
+
+            persistData();
+            showDashboard();
+        }
+
+        function saveWaNumber() {
+            const num = document.getElementById('waNumberInput').value.trim();
+            siteData.whatsapp = num;
+            persistData();
+            alert("WhatsApp අංකය සාර්ථකව Update කරන ලදී!");
+        }
+
+        function saveCredentials() {
+            const newUser = document.getElementById('newAdminUser').value.trim();
+            const newPass = document.getElementById('newAdminPass').value.trim();
+
+            if (!newUser || !newPass) {
+                alert("කරුණාකර Username සහ Password දෙකම ඇතුලත් කරන්න!");
+                return;
+            }
+
+            siteData.credentials = { username: newUser, password: newPass };
+            persistData();
+            alert("Admin Username සහ Password සාර්ථකව වෙනස් කරන ලදී!");
+        }
+
+        // Start App
+        initData();
+    </script>
+</body>
+</html>
